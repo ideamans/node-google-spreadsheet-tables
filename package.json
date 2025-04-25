@@ -1,7 +1,7 @@
 {
   "name": "google-spreadsheet-tables",
   "description": "A TypeScript library that enables using Google Spreadsheets as a simple database with type safety. It provides a type-safe interface using Zod schemas to define table structures and perform CRUD operations on Google Spreadsheets.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "typings": "build/index.d.ts",
   "module": "build/index.js",
