@@ -7,7 +7,7 @@
   "module": "build/index.js",
   "license": "MIT",
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "packageManager": "pnpm@8.15.4",
   "scripts": {
