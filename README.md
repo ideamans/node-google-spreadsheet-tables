@@ -104,6 +104,21 @@ Then you can use `useWorksheetWithServiceAccount` without specifying the service
 const { doc } = useWorksheetWithServiceAccount('YOUR_SPREADSHEET_ID')
 ```
 
+### 3. Using Individual Environment Variables
+
+You can also set individual environment variables for the service account credentials:
+
+```bash
+export GOOGLE_SERVICE_ACCOUNT_EMAIL="your-service-account@project.iam.gserviceaccount.com"
+export GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n..."
+```
+
+Then you can use `useWorksheetWithServiceAccount` without specifying the service account:
+
+```typescript
+const { doc } = useWorksheetWithServiceAccount('YOUR_SPREADSHEET_ID')
+```
+
 ## API Reference
 
 ### `useWorksheetWithServiceAccount(spreadsheetId?: string, serviceAccount?: ServiceAccount)`
@@ -142,3 +157,5 @@ The library can use the following environment variables:
 - `TABLES_SHEET_ID`: The default spreadsheet ID
 - `GOOGLE_APPLICATION_CREDENTIALS_JSON`: Service account credentials as a JSON string
 - `GOOGLE_APPLICATION_CREDENTIALS`: Path to the service account JSON file
+- `GOOGLE_SERVICE_ACCOUNT_EMAIL`: Service account email address
+- `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY`: Service account private key

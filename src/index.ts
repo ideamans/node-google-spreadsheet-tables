@@ -18,6 +18,11 @@ export function useWorksheetWithServiceAccount(spreadsheetId?: string, serviceAc
   if (!serviceAccount) {
     if (process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) {
       serviceAccount = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) as ServiceAccount
+    } else if (process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL && process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY) {
+      serviceAccount = {
+        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+        private_key: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY,
+      }
     } else {
       throw new Error(`serviceAccount or env.GOOGLE_APPLICATION_CREDENTIALS_JSON is required`)
     }
