@@ -26,6 +26,8 @@ jobs:
         run: pnpm install
       - name: Building & Testing
         run: pnpm test
+        env:
+          TABLES_SHEET_ID: ${{ secrets.TABLES_SHEET_ID }}
 
   publish:
     runs-on: ubuntu-latest

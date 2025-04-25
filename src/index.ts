@@ -11,9 +11,9 @@ export interface ServiceAccount {
 
 // Use google-spreadsheet instance with service account
 export function useWorksheetWithServiceAccount(spreadsheetId?: string, serviceAccount?: ServiceAccount) {
-  spreadsheetId = spreadsheetId || process.env.DOCUMENTS_SHEET_ID
+  spreadsheetId = spreadsheetId || process.env.TABLES_SHEET_ID
   if (!spreadsheetId) {
-    throw new Error('spreadsheetId or env.DOCUMENTS_SHEET_ID is required')
+    throw new Error('spreadsheetId or env.TABLES_SHEET_ID is required')
   }
   if (!serviceAccount) {
     if (process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) {

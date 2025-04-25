@@ -139,6 +139,6 @@ Returns an object with the following methods:
 
 The library can use the following environment variables:
 
-- `DOCUMENTS_SHEET_ID`: The default spreadsheet ID
+- `TABLES_SHEET_ID`: The default spreadsheet ID
 - `GOOGLE_APPLICATION_CREDENTIALS_JSON`: Service account credentials as a JSON string
 - `GOOGLE_APPLICATION_CREDENTIALS`: Path to the service account JSON file

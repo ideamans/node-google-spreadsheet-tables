@@ -139,6 +139,6 @@ const { doc } = useWorksheetWithServiceAccount('YOUR_SPREADSHEET_ID')
 
 ライブラリは以下の環境変数を使用できます：
 
-- `DOCUMENTS_SHEET_ID`: デフォルトのスプレッドシート ID
+- `TABLES_SHEET_ID`: デフォルトのスプレッドシート ID
 - `GOOGLE_APPLICATION_CREDENTIALS_JSON`: サービスアカウントの認証情報（JSON 文字列）
 - `GOOGLE_APPLICATION_CREDENTIALS`: サービスアカウントの JSON ファイルのパス
