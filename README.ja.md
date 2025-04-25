@@ -74,7 +74,7 @@ await clear()
 
 ## サービスアカウント認証情報
 
-サービスアカウントの認証情報を提供する方法は2つあります：
+サービスアカウントの認証情報を提供する方法は3つあります：
 
 ### 1. 環境変数でファイルパスを指定
 
@@ -96,6 +96,21 @@ const { doc } = useWorksheetWithServiceAccountFile('YOUR_SPREADSHEET_ID')
 
 ```bash
 export GOOGLE_APPLICATION_CREDENTIALS_JSON='{"client_email":"...","private_key":"..."}'
+```
+
+その後、`useWorksheetWithServiceAccount` をサービスアカウントを指定せずに使用できます：
+
+```typescript
+const { doc } = useWorksheetWithServiceAccount('YOUR_SPREADSHEET_ID')
+```
+
+### 3. 個別の環境変数を使用
+
+サービスアカウントの認証情報を個別の環境変数として設定することもできます：
+
+```bash
+export GOOGLE_SERVICE_ACCOUNT_EMAIL="your-service-account@project.iam.gserviceaccount.com"
+export GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n..."
 ```
 
 その後、`useWorksheetWithServiceAccount` をサービスアカウントを指定せずに使用できます：
@@ -142,3 +157,5 @@ const { doc } = useWorksheetWithServiceAccount('YOUR_SPREADSHEET_ID')
 - `TABLES_SHEET_ID`: デフォルトのスプレッドシート ID
 - `GOOGLE_APPLICATION_CREDENTIALS_JSON`: サービスアカウントの認証情報（JSON 文字列）
 - `GOOGLE_APPLICATION_CREDENTIALS`: サービスアカウントの JSON ファイルのパス
+- `GOOGLE_SERVICE_ACCOUNT_EMAIL`: サービスアカウントのメールアドレス
+- `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY`: サービスアカウントの秘密鍵
