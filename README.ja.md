@@ -26,7 +26,7 @@ pnpm add google-spreadsheet-tables
 以下は、ユーザープロファイルスキーマを使用した完全な使用例です：
 
 ```typescript
-import { useWorksheetWithServiceAccountFile, useDocumentsSheet } from 'google-spreadsheet-tables'
+import { useWorksheetWithServiceAccountFile, useSpreadsheetTable } from 'google-spreadsheet-tables'
 import { z } from 'zod'
 
 // スキーマを定義
@@ -42,7 +42,7 @@ const userSchema = z.object({
 const { doc } = useWorksheetWithServiceAccountFile('YOUR_SPREADSHEET_ID', './service-account.json')
 
 // ドキュメントシートを作成
-const { append, get, patch, snapshot, clear } = await useDocumentsSheet(
+const { append, get, patch, snapshot, clear } = await useSpreadsheetTable(
   doc,
   'Users',
   userSchema
@@ -135,7 +135,7 @@ const { doc } = useWorksheetWithServiceAccount('YOUR_SPREADSHEET_ID')
 - `spreadsheetId`: Google スプレッドシートの ID
 - `filePath`: サービスアカウントの JSON ファイルのパス
 
-### `useDocumentsSheet(doc: GoogleSpreadsheet, worksheetName: string, dataSchema: z.ZodObject<z.ZodRawShape>)`
+### `useSpreadsheetTable(doc: GoogleSpreadsheet, worksheetName: string, dataSchema: z.ZodObject<z.ZodRawShape>)`
 
 指定されたスキーマでドキュメントシートを作成します。
 

@@ -26,7 +26,7 @@ pnpm add google-spreadsheet-tables
 Here's a complete example of how to use the library with a user profile schema:
 
 ```typescript
-import { useWorksheetWithServiceAccountFile, useDocumentsSheet } from 'google-spreadsheet-tables'
+import { useWorksheetWithServiceAccountFile, useSpreadsheetTable } from 'google-spreadsheet-tables'
 import { z } from 'zod'
 
 // Define your schema
@@ -42,7 +42,7 @@ const userSchema = z.object({
 const { doc } = useWorksheetWithServiceAccountFile('YOUR_SPREADSHEET_ID', './service-account.json')
 
 // Create a documents sheet
-const { append, get, patch, snapshot, clear } = await useDocumentsSheet(
+const { append, get, patch, snapshot, clear } = await useSpreadsheetTable(
   doc,
   'Users',
   userSchema
@@ -135,7 +135,7 @@ Initializes a connection to a Google Spreadsheet using a service account JSON fi
 - `spreadsheetId`: The ID of the Google Spreadsheet
 - `filePath`: Path to the service account JSON file
 
-### `useDocumentsSheet(doc: GoogleSpreadsheet, worksheetName: string, dataSchema: z.ZodObject<z.ZodRawShape>)`
+### `useSpreadsheetTable(doc: GoogleSpreadsheet, worksheetName: string, dataSchema: z.ZodObject<z.ZodRawShape>)`
 
 Creates a documents sheet with the specified schema.
 

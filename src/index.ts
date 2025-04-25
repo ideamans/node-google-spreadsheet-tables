@@ -52,7 +52,7 @@ export function useWorksheetWithServiceAccountFile(spreadsheetId?: string, fileP
 }
 
 // Use worksheet as documents database with spreadsheet and zod schema
-export async function useDocumentsSheet(
+export async function useSpreadsheetTable(
   doc: GoogleSpreadsheet,
   worksheetName: string,
   dataSchema: z.ZodObject<z.ZodRawShape>,
@@ -182,3 +182,5 @@ export async function useDocumentsSheet(
     append,
   }
 }
+
+export const useDocumentsSheet = useSpreadsheetTable

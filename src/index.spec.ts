@@ -3,7 +3,7 @@ import { config } from 'dotenv'
 import { v4 } from 'uuid'
 import { z } from 'zod'
 
-import { useDocumentsSheet, useWorksheetWithServiceAccount } from './index.js'
+import { useSpreadsheetTable, useWorksheetWithServiceAccount } from './index.js'
 
 config()
 
@@ -14,7 +14,7 @@ test('Testing', async (t) => {
     number: z.coerce.number(),
     string: z.string(),
   })
-  const { sheet, snapshot, append, get, patch, clear } = await useDocumentsSheet(doc, worksheetName, dataSchema)
+  const { sheet, snapshot, append, get, patch, clear } = await useSpreadsheetTable(doc, worksheetName, dataSchema)
 
   // Append documents
   await append({ number: 1, string: 'one' })
