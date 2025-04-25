@@ -57,13 +57,11 @@ export async function useDocumentsSheet(
   let sheet = doc.sheetsByTitle[worksheetName]
   if (sheet) {
     // Validate header columns with schema
-    const headerColumns = [...sheet.headerValues].sort()
-    const schemaColumns = [...Object.keys(dataSchema.shape)].sort()
-    if (
-      headerColumns.length !== schemaColumns.length ||
-      headerColumns.some((column) => !schemaColumns.includes(column))
-    ) {
-      throw new Error(`Headers in ${worksheetName} doesn't match dataSchema`)
+    const headerColumns = sheet.headerValues
+    const schemaColumns = Object.keys(dataSchema.shape)
+    const missingColumns = schemaColumns.filter((col) => !headerColumns.includes(col))
+    if (missingColumns.length > 0) {
+      throw new Error(`Missing column(s): ${missingColumns.join(', ')}`)
     }
   } else {
     // Add the worksheet
