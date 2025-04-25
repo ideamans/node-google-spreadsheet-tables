@@ -28,6 +28,7 @@ jobs:
         run: pnpm test
         env:
           TABLES_SHEET_ID: ${{ secrets.TABLES_SHEET_ID }}
+          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
 
   publish:
     runs-on: ubuntu-latest
