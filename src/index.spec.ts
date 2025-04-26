@@ -75,5 +75,13 @@ test('Testing', async (t) => {
     t.is(documents[0].data.string, 'one', `Append document again: First document string should be 'one'`)
   }
 
+  // With the another instance
+  // Testing a case of worksheet already exists
+  {
+    const another = await useSpreadsheetTable(doc, worksheetName, dataSchema)
+    const result = await another.snapshot()
+    t.is(result.documents.length, 1, `With other instance: Documents count should be 1`)
+  }
+
   await sheet.delete()
 })

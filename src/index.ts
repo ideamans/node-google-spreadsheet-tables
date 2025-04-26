@@ -62,6 +62,7 @@ export async function useSpreadsheetTable(
   let sheet = doc.sheetsByTitle[worksheetName]
   if (sheet) {
     // Validate header columns with schema
+    await sheet.loadHeaderRow()
     const headerColumns = sheet.headerValues
     const schemaColumns = Object.keys(dataSchema.shape)
     const missingColumns = schemaColumns.filter((col) => !headerColumns.includes(col))
