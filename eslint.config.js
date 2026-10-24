@@ -1,7 +1,7 @@
 import tsParser from '@typescript-eslint/parser'
 import tsPlugin from '@typescript-eslint/eslint-plugin'
-import eslintCommentsPlugin from 'eslint-plugin-eslint-comments'
-import importPlugin from 'eslint-plugin-import'
+import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comments'
+import importPlugin from 'eslint-plugin-import-x'
 
 export default [
   {

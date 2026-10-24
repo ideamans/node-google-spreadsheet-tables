@@ -21,6 +21,8 @@ Google スプレッドシートを型安全なデータベースとして利用�
 pnpm add google-spreadsheet-tables
 ```
 
+動作要件: Node.js 22 以上、スキーマは Zod 4（`zod@^4`）で定義してください。
+
 ## 使用例
 
 以下は、ユーザープロファイルスキーマを使用した完全な使用例です：
@@ -159,3 +161,17 @@ const { doc } = useWorksheetWithServiceAccount('YOUR_SPREADSHEET_ID')
 - `GOOGLE_APPLICATION_CREDENTIALS`: サービスアカウントの JSON ファイルのパス
 - `GOOGLE_SERVICE_ACCOUNT_EMAIL`: サービスアカウントのメールアドレス
 - `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY`: サービスアカウントの秘密鍵
+
+## 開発
+
+```bash
+pnpm install
+pnpm test
+```
+
+`pnpm test` はビルド・lint・ユニットテストを実行します。ユニットテスト（`src/index.spec.ts`）は Google にアクセスしません。
+`src/_mock/google-sheets-api.ts` が Sheets API v4 と OAuth2 トークンエンドポイントを HTTP レベル（nock）でメモリ上に再現し、
+テスト中は外部ネットワークへの接続を禁止しています。
+
+`src/index.live.spec.ts` は同じシナリオを実際の Google Sheets API に対して実行します。
+`TABLES_LIVE_TEST=1`・`TABLES_SHEET_ID`・サービスアカウントの認証情報（上記）が `.env` などで設定されていない場合はスキップされます。

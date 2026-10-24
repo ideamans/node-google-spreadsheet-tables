@@ -164,7 +164,8 @@ export async function useSpreadsheetTable(
     if (!validation.success) {
       throw new Error(`The data doesn't match dataSchema: ${validation.error.message}: ${JSON.stringify(data)}`)
     }
-    const row = await sheet.addRow(data)
+    // google-spreadsheet v5 types row values as RawRowData; the schema validated object is passed as-is
+    const row = await sheet.addRow(data as Parameters<typeof sheet.addRow>[0])
 
     return {
       rowKey: row.rowNumber,
