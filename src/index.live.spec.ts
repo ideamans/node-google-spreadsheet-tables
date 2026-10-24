@@ -5,7 +5,7 @@ import { z } from 'zod'
 
 import { useSpreadsheetTable, useWorksheetWithServiceAccount } from './index.js'
 
-config()
+config({ quiet: true })
 
 // Runs against the real Google Sheets API only when credentials are configured (e.g. in .env).
 // The mock based tests in index.spec.ts cover the same scenario without network access.
