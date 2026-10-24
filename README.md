@@ -174,4 +174,4 @@ pnpm test
 and outbound network access is disabled during the tests.
 
 `src/index.live.spec.ts` runs the same scenario against the real Google Sheets API. It is skipped unless
-`TABLES_SHEET_ID` and service account credentials (see above) are set, for example in `.env`.
+`TABLES_LIVE_TEST=1`, `TABLES_SHEET_ID` and service account credentials (see above) are set, for example in `.env`.

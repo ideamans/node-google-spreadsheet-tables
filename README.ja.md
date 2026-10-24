@@ -174,4 +174,4 @@ pnpm test
 テスト中は外部ネットワークへの接続を禁止しています。
 
 `src/index.live.spec.ts` は同じシナリオを実際の Google Sheets API に対して実行します。
-`TABLES_SHEET_ID` とサービスアカウントの認証情報（上記）が `.env` などで設定されていない場合はスキップされます。
+`TABLES_LIVE_TEST=1`・`TABLES_SHEET_ID`・サービスアカウントの認証情報（上記）が `.env` などで設定されていない場合はスキップされます。

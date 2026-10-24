@@ -7,13 +7,13 @@ import { useSpreadsheetTable, useWorksheetWithServiceAccount } from './index.js'
 
 config({ quiet: true })
 
-// Runs against the real Google Sheets API only when credentials are configured (e.g. in .env).
+// Runs against the real Google Sheets API only when TABLES_LIVE_TEST=1 and credentials are configured (e.g. in .env).
 // The mock based tests in index.spec.ts cover the same scenario without network access.
 const hasCredentials =
   !!process.env.TABLES_SHEET_ID &&
   (!!process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON ||
     (!!process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL && !!process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY))
-const liveTest = hasCredentials ? test : test.skip
+const liveTest = process.env.TABLES_LIVE_TEST === '1' && hasCredentials ? test : test.skip
 
 liveTest('Live: CRUD against the real Google Sheets API', async (t) => {
   const { doc } = useWorksheetWithServiceAccount()
