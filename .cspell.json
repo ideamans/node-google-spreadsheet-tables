@@ -2,9 +2,7 @@
   "version": "0.1",
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
   "language": "en",
-  "words": [
-
-  ],
+  "words": ["Recalc", "WHATWG"],
   "flagWords": [],
   "ignorePaths": [
     "package.json",

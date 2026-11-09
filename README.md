@@ -21,6 +21,8 @@ For small-scale, non-critical applications where performance is not a primary co
 pnpm add google-spreadsheet-tables
 ```
 
+Requirements: Node.js 22 or later, and Zod 4 schemas (`zod@^4`).
+
 ## Usage Example
 
 Here's a complete example of how to use the library with a user profile schema:
@@ -159,3 +161,17 @@ The library can use the following environment variables:
 - `GOOGLE_APPLICATION_CREDENTIALS`: Path to the service account JSON file
 - `GOOGLE_SERVICE_ACCOUNT_EMAIL`: Service account email address
 - `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY`: Service account private key
+
+## Development
+
+```bash
+pnpm install
+pnpm test
+```
+
+`pnpm test` builds, lints and runs the unit tests. The unit tests (`src/index.spec.ts`) do not access Google:
+`src/_mock/google-sheets-api.ts` emulates the Sheets API v4 and the OAuth2 token endpoint in memory at the HTTP level (nock),
+and outbound network access is disabled during the tests.
+
+`src/index.live.spec.ts` runs the same scenario against the real Google Sheets API. It is skipped unless
+`TABLES_LIVE_TEST=1`, `TABLES_SHEET_ID` and service account credentials (see above) are set, for example in `.env`.
