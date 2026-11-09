@@ -1,6 +1,8 @@
 name: Testing
 on:
   push:
+    branches:
+      - main
   pull_request:
 
 jobs:
@@ -8,20 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [22.x, 24.x]
+        node-version: [22.x, 24.x, 26.x]
     steps:
-      - uses: actions/checkout@v4
-      - run: corepack enable
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
       - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
-          registry-url: 'https://registry.npmjs.org'
       - name: Install modules
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
       - name: Building & Testing
         run: pnpm test
-        env:
-          TABLES_SHEET_ID: ${{ secrets.TABLES_SHEET_ID }}
-          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
