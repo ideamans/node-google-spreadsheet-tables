@@ -175,3 +175,8 @@ pnpm test
 
 `src/index.live.spec.ts` は同じシナリオを実際の Google Sheets API に対して実行します。
 `TABLES_LIVE_TEST=1`・`TABLES_SHEET_ID`・サービスアカウントの認証情報（上記）が `.env` などで設定されていない場合はスキップされます。
+
+## リリース（メンテナー向け）
+
+package.json の version を上げてコミットし、`git tag vX.Y.Z && git push origin vX.Y.Z`。
+GitHub Actions が npm の Trusted Publishing（OIDC）で公開する（トークンは使わない）。
